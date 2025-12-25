@@ -4,20 +4,33 @@ from dotenv import load_dotenv
 
 import pytest
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
 
 from pages.login_page import Login
 from utils.screenshot_utility import take_screenshot
 
 load_dotenv()
+def pytest_addoption(parser):
+    parser.addoption("--browser_name",action="store",default = "chrome",help="Browser selection at run time")
+
 @pytest.fixture()
-def driver():
-    opt = webdriver.ChromeOptions()
-    opt.add_experimental_option("prefs",{
-        "credentials_enable_service":False,
-        "profile.password_manager_enabled":False,
-        "profile.password_manager_leak_detection":False
-    })
-    driver = webdriver.Chrome(options=opt)
+def driver(request):
+    global driver
+    browser = request.config.getoption("--browser_name")
+    if browser == "chrome":
+        opt = webdriver.ChromeOptions()
+        opt.add_experimental_option("prefs",{
+            "credentials_enable_service":False,
+            "profile.password_manager_enabled":False,
+            "profile.password_manager_leak_detection":False
+        })
+        driver = webdriver.Chrome(options=opt)
+    elif browser == "firefox":
+         #firefox_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\geckodriver_win64\geckodriver.exe")
+         driver = webdriver.Firefox()
+    elif browser == "edge":
+        edge_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\edgedriver_win64\msedgedriver.exe")
+        driver = webdriver.Edge(service=edge_driver_path)
     driver.maximize_window()
     yield driver
     driver.quit()
