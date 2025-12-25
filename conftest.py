@@ -26,8 +26,8 @@ def driver(request):
         })
         driver = webdriver.Chrome(options=opt)
     elif browser == "firefox":
-         #firefox_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\geckodriver_win64\geckodriver.exe")
-         driver = webdriver.Firefox()
+         firefox_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\geckodriver_win64\geckodriver.exe")
+         driver = webdriver.Firefox(service=firefox_driver_path)
     elif browser == "edge":
         edge_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\edgedriver_win64\msedgedriver.exe")
         driver = webdriver.Edge(service=edge_driver_path)

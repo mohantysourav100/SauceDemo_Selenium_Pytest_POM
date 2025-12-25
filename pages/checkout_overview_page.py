@@ -25,14 +25,14 @@ class CheckoutOverview(Base,Regular):
         item_actual_price = list(map(float,self.item_prices))
         total_price  = reduce(lambda x,y : x + y, item_actual_price)
         if self.is_displayed(self.ITEM_TOTAL_PRICE):
-            expected_price = float(self.text_spliting(self.find(self.ITEM_TOTAL_PRICE).text))
+            expected_price = float(self.text_spliting(self.text_off(self.ITEM_TOTAL_PRICE)))
             assert total_price == expected_price
             print(f"TOTAL PRICE : {total_price} same as DISPLAYED PRICE : {expected_price}")
         if self.is_displayed(self.TAX_AMOUNT):
-            actual_tax = float(self.text_spliting(self.find(self.TAX_AMOUNT).text))
+            actual_tax = float(self.text_spliting(self.text_off(self.TAX_AMOUNT)))
             actual_final_amount = total_price + actual_tax
         if self.is_displayed(self.FINAL_AMOUNT):
-            expected_final_amount = float(self.text_spliting(self.find(self.FINAL_AMOUNT).text))
+            expected_final_amount = float(self.text_spliting(self.text_off(self.FINAL_AMOUNT)))
             assert actual_final_amount == expected_final_amount
             print(f"TOTAL AMOUNT : {actual_final_amount} same as DISPLAYED AMOUNT : {expected_final_amount} including tax")
 
