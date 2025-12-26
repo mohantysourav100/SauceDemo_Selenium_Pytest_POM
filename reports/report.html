@@ -323,12 +323,194 @@ div.media {
   margin-right: 10px;
 }
 
+/******************************
+ * CUSTOM CSS
+ * css\custom.css
+ ******************************/
+
+/* ------------------------------
+   PYTEST HTML REPORT THEME
+   Clean, Modern, and Readable
+--------------------------------*/
+
+/* === BASE === */
+body {
+    font-family: 'Segoe UI', 'Roboto', sans-serif;
+    background-color: #f5f7fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3, h4 {
+    color: #202124;
+    font-weight: 600;
+}
+
+/* === HEADER === */
+h1 {
+    background: linear-gradient(135deg, #007bff, #00a8ff);
+    color: white;
+    padding: 20px;
+    margin: 0;
+    text-align: center;
+    border-bottom: 4px solid #005ecb;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* === TABLES === */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+th {
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.9em;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+td {
+    padding: 10px 15px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+tr:nth-child(even) {
+    background-color: #f9fafc;
+}
+
+tr:hover {
+    background-color: #eef3ff;
+}
+
+/* === STATUS BADGES === */
+.pass, .failed, .skipped {
+    font-weight: 600;
+    text-align: center;
+    border-radius: 8px;
+    padding: 4px 10px;
+    display: inline-block;
+    width: 80px;
+}
+
+.pass {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.failed {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.skipped {
+    background-color: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeeba;
+}
+
+/* === SUMMARY SECTION === */
+#summary {
+    margin: 20px auto;
+    max-width: 800px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+#summary div {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    font-size: 1.1em;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+#summary .passed {
+    background: linear-gradient(135deg, #28a745, #34ce57);
+}
+
+#summary .failed {
+    background: linear-gradient(135deg, #dc3545, #ff6b6b);
+}
+
+#summary .skipped {
+    background: linear-gradient(135deg, #ffc107, #ffcd39);
+}
+
+/* === CODE BLOCKS === */
+code, pre {
+    background-color: #f1f3f4;
+    color: #212529;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+}
+
+/* === LOGS & COLLAPSIBLE DETAILS === */
+.details {
+    background-color: #f8f9fa;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.details summary {
+    font-weight: 600;
+    cursor: pointer;
+    color: #007bff;
+}
+
+.details summary:hover {
+    text-decoration: underline;
+}
+
+/* === FOOTER === */
+footer {
+    text-align: center;
+    padding: 15px;
+    background-color: #e9ecef;
+    border-top: 1px solid #dcdcdc;
+    color: #555;
+    font-size: 0.9em;
+}
+
+/* === SCROLLBAR STYLE === */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #007bff;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #005ecb;
+}
+
       </style>
     
   </head>
   <body>
     <h1 id="title">report.html</h1>
-    <p>Report generated on 25-Dec-2025 at 21:09:51 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+    <p>Report generated on 26-Dec-2025 at 11:23:19 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
         v4.1.1</p>
     <div id="environment-header">
       <h2>Environment</h2>
@@ -382,7 +564,7 @@ div.media {
         <h2>Summary</h2>
         <div class="additional-summary prefix">
         </div>
-        <p class="run-count">0 test took 00:00:10.</p>
+        <p class="run-count">5 tests took 00:00:54.</p>
         <p class="filter">(Un)check the boxes to filter the results.</p>
         <div class="summary__reload">
           <div class="summary__reload__button hidden" onclick="location.reload()">
@@ -394,16 +576,16 @@ div.media {
           <div class="filters">
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled/>
             <span class="failed">0 Failed,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" disabled/>
-            <span class="passed">0 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
+            <span class="passed">5 Passed,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
             <span class="skipped">0 Skipped,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
             <span class="xfailed">0 Expected failures,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled/>
             <span class="xpassed">0 Unexpected passes,</span>
-            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" />
-            <span class="error">5 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled/>
+            <span class="error">0 Errors,</span>
             <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled/>
             <span class="rerun">0 Reruns</span>
           </div>
@@ -429,7 +611,7 @@ div.media {
     </table>
   </body>
   <footer>
-    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.14.2&#34;, &#34;Platform&#34;: &#34;Windows-11-10.0.26100-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;9.0.1&#34;, &#34;pluggy&#34;: &#34;1.6.0&#34;}, &#34;Plugins&#34;: {&#34;allure-pytest&#34;: &#34;2.15.2&#34;, &#34;dependency&#34;: &#34;0.6.0&#34;, &#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;, &#34;order&#34;: &#34;1.3.0&#34;, &#34;ordering&#34;: &#34;0.6&#34;, &#34;rerunfailures&#34;: &#34;16.1&#34;, &#34;xdist&#34;: &#34;3.8.0&#34;}}, &#34;tests&#34;: {&#34;tests/test_login.py::test_login&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: null, &#34;format_type&#34;: &#34;html&#34;, &#34;content&#34;: &#34;&lt;div&gt;&lt;img src=\&#34;C:\\Users\\Lenovo\\Selenium_POM_Git\\reports\\tests/test_login.py_test_login.png\&#34; alt=\&#34;screenshot\&#34; style=\&#34;width:304px;height:228px;\&#34; onclick=\&#34;window.open(this.src)\&#34; align=\&#34;right\&#34;/&gt;&lt;/div&gt;&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;tests/test_login.py::test_login::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_login.py::test_login::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw0] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n\nrequest = &amp;lt;SubRequest &amp;#x27;driver&amp;#x27; for &amp;lt;Function test_login&amp;gt;&amp;gt;\n\n    @pytest.fixture()\n    def driver(request):\n        global driver\n        browser = request.config.getoption(&amp;quot;--browser_name&amp;quot;)\n        if browser == &amp;quot;chrome&amp;quot;:\n            opt = webdriver.ChromeOptions()\n            opt.add_experimental_option(&amp;quot;prefs&amp;quot;,{\n                &amp;quot;credentials_enable_service&amp;quot;:False,\n                &amp;quot;profile.password_manager_enabled&amp;quot;:False,\n                &amp;quot;profile.password_manager_leak_detection&amp;quot;:False\n            })\n            driver = webdriver.Chrome(options=opt)\n        elif browser == &amp;quot;firefox&amp;quot;:\n             firefox_driver_path = Service(r&amp;quot;C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe&amp;quot;)\n&amp;gt;            driver = webdriver.Firefox(service=firefox_driver_path)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nconftest.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver.py:62: in __init__\n    self.service.start()\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:110: in start\n    self.assert_process_still_running()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.chrome.service.Service object at 0x0000013F5FCD5E80&amp;gt;\n\n    def assert_process_still_running(self) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Check if the underlying process is still running.&amp;quot;&amp;quot;&amp;quot;\n        return_code = self.process.poll()\n        if return_code:\n&amp;gt;           raise WebDriverException(f&amp;quot;Service {self._path} unexpectedly exited. Status code was: {return_code}&amp;quot;)\nE           selenium.common.exceptions.WebDriverException: Message: Service C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe unexpectedly exited. Status code was: 64\n\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:123: WebDriverException\n&#34;}], &#34;tests/test_your_cart.py::test_yourCart&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: null, &#34;format_type&#34;: &#34;html&#34;, &#34;content&#34;: &#34;&lt;div&gt;&lt;img src=\&#34;C:\\Users\\Lenovo\\Selenium_POM_Git\\reports\\tests/test_your_cart.py_test_yourCart.png\&#34; alt=\&#34;screenshot\&#34; style=\&#34;width:304px;height:228px;\&#34; onclick=\&#34;window.open(this.src)\&#34; align=\&#34;right\&#34;/&gt;&lt;/div&gt;&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;tests/test_your_cart.py::test_yourCart::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_your_cart.py::test_yourCart::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw1] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n\nrequest = &amp;lt;SubRequest &amp;#x27;driver&amp;#x27; for &amp;lt;Function test_yourCart&amp;gt;&amp;gt;\n\n    @pytest.fixture()\n    def driver(request):\n        global driver\n        browser = request.config.getoption(&amp;quot;--browser_name&amp;quot;)\n        if browser == &amp;quot;chrome&amp;quot;:\n            opt = webdriver.ChromeOptions()\n            opt.add_experimental_option(&amp;quot;prefs&amp;quot;,{\n                &amp;quot;credentials_enable_service&amp;quot;:False,\n                &amp;quot;profile.password_manager_enabled&amp;quot;:False,\n                &amp;quot;profile.password_manager_leak_detection&amp;quot;:False\n            })\n            driver = webdriver.Chrome(options=opt)\n        elif browser == &amp;quot;firefox&amp;quot;:\n             firefox_driver_path = Service(r&amp;quot;C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe&amp;quot;)\n&amp;gt;            driver = webdriver.Firefox(service=firefox_driver_path)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nconftest.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver.py:62: in __init__\n    self.service.start()\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:110: in start\n    self.assert_process_still_running()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.chrome.service.Service object at 0x00000239E3976120&amp;gt;\n\n    def assert_process_still_running(self) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Check if the underlying process is still running.&amp;quot;&amp;quot;&amp;quot;\n        return_code = self.process.poll()\n        if return_code:\n&amp;gt;           raise WebDriverException(f&amp;quot;Service {self._path} unexpectedly exited. Status code was: {return_code}&amp;quot;)\nE           selenium.common.exceptions.WebDriverException: Message: Service C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe unexpectedly exited. Status code was: 64\n\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:123: WebDriverException\n&#34;}], &#34;tests/test_your_information.py::test_yourinformation&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: null, &#34;format_type&#34;: &#34;html&#34;, &#34;content&#34;: &#34;&lt;div&gt;&lt;img src=\&#34;C:\\Users\\Lenovo\\Selenium_POM_Git\\reports\\tests/test_your_information.py_test_yourinformation.png\&#34; alt=\&#34;screenshot\&#34; style=\&#34;width:304px;height:228px;\&#34; onclick=\&#34;window.open(this.src)\&#34; align=\&#34;right\&#34;/&gt;&lt;/div&gt;&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;tests/test_your_information.py::test_yourinformation::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_your_information.py::test_yourinformation::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw1] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n\nrequest = &amp;lt;SubRequest &amp;#x27;driver&amp;#x27; for &amp;lt;Function test_yourinformation&amp;gt;&amp;gt;\n\n    @pytest.fixture()\n    def driver(request):\n        global driver\n        browser = request.config.getoption(&amp;quot;--browser_name&amp;quot;)\n        if browser == &amp;quot;chrome&amp;quot;:\n            opt = webdriver.ChromeOptions()\n            opt.add_experimental_option(&amp;quot;prefs&amp;quot;,{\n                &amp;quot;credentials_enable_service&amp;quot;:False,\n                &amp;quot;profile.password_manager_enabled&amp;quot;:False,\n                &amp;quot;profile.password_manager_leak_detection&amp;quot;:False\n            })\n            driver = webdriver.Chrome(options=opt)\n        elif browser == &amp;quot;firefox&amp;quot;:\n             firefox_driver_path = Service(r&amp;quot;C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe&amp;quot;)\n&amp;gt;            driver = webdriver.Firefox(service=firefox_driver_path)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nconftest.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver.py:62: in __init__\n    self.service.start()\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:110: in start\n    self.assert_process_still_running()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.chrome.service.Service object at 0x00000239E3953D90&amp;gt;\n\n    def assert_process_still_running(self) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Check if the underlying process is still running.&amp;quot;&amp;quot;&amp;quot;\n        return_code = self.process.poll()\n        if return_code:\n&amp;gt;           raise WebDriverException(f&amp;quot;Service {self._path} unexpectedly exited. Status code was: {return_code}&amp;quot;)\nE           selenium.common.exceptions.WebDriverException: Message: Service C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe unexpectedly exited. Status code was: 64\n\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:123: WebDriverException\n&#34;}], &#34;tests/test_products_cart.py::test_itemCart&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: null, &#34;format_type&#34;: &#34;html&#34;, &#34;content&#34;: &#34;&lt;div&gt;&lt;img src=\&#34;C:\\Users\\Lenovo\\Selenium_POM_Git\\reports\\tests/test_products_cart.py_test_itemCart.png\&#34; alt=\&#34;screenshot\&#34; style=\&#34;width:304px;height:228px;\&#34; onclick=\&#34;window.open(this.src)\&#34; align=\&#34;right\&#34;/&gt;&lt;/div&gt;&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;tests/test_products_cart.py::test_itemCart::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_products_cart.py::test_itemCart::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw0] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n\nrequest = &amp;lt;SubRequest &amp;#x27;driver&amp;#x27; for &amp;lt;Function test_itemCart&amp;gt;&amp;gt;\n\n    @pytest.fixture()\n    def driver(request):\n        global driver\n        browser = request.config.getoption(&amp;quot;--browser_name&amp;quot;)\n        if browser == &amp;quot;chrome&amp;quot;:\n            opt = webdriver.ChromeOptions()\n            opt.add_experimental_option(&amp;quot;prefs&amp;quot;,{\n                &amp;quot;credentials_enable_service&amp;quot;:False,\n                &amp;quot;profile.password_manager_enabled&amp;quot;:False,\n                &amp;quot;profile.password_manager_leak_detection&amp;quot;:False\n            })\n            driver = webdriver.Chrome(options=opt)\n        elif browser == &amp;quot;firefox&amp;quot;:\n             firefox_driver_path = Service(r&amp;quot;C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe&amp;quot;)\n&amp;gt;            driver = webdriver.Firefox(service=firefox_driver_path)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nconftest.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver.py:62: in __init__\n    self.service.start()\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:110: in start\n    self.assert_process_still_running()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.chrome.service.Service object at 0x0000013F5FCB39D0&amp;gt;\n\n    def assert_process_still_running(self) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Check if the underlying process is still running.&amp;quot;&amp;quot;&amp;quot;\n        return_code = self.process.poll()\n        if return_code:\n&amp;gt;           raise WebDriverException(f&amp;quot;Service {self._path} unexpectedly exited. Status code was: {return_code}&amp;quot;)\nE           selenium.common.exceptions.WebDriverException: Message: Service C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe unexpectedly exited. Status code was: 64\n\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:123: WebDriverException\n&#34;}], &#34;tests/test_overview.py::test_checkoutOverview&#34;: [{&#34;extras&#34;: [{&#34;name&#34;: null, &#34;format_type&#34;: &#34;html&#34;, &#34;content&#34;: &#34;&lt;div&gt;&lt;img src=\&#34;C:\\Users\\Lenovo\\Selenium_POM_Git\\reports\\tests/test_overview.py_test_checkoutOverview.png\&#34; alt=\&#34;screenshot\&#34; style=\&#34;width:304px;height:228px;\&#34; onclick=\&#34;window.open(this.src)\&#34; align=\&#34;right\&#34;/&gt;&lt;/div&gt;&#34;, &#34;mime_type&#34;: null, &#34;extension&#34;: null}], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;tests/test_overview.py::test_checkoutOverview::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_overview.py::test_checkoutOverview::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw0] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n\nrequest = &amp;lt;SubRequest &amp;#x27;driver&amp;#x27; for &amp;lt;Function test_checkoutOverview&amp;gt;&amp;gt;\n\n    @pytest.fixture()\n    def driver(request):\n        global driver\n        browser = request.config.getoption(&amp;quot;--browser_name&amp;quot;)\n        if browser == &amp;quot;chrome&amp;quot;:\n            opt = webdriver.ChromeOptions()\n            opt.add_experimental_option(&amp;quot;prefs&amp;quot;,{\n                &amp;quot;credentials_enable_service&amp;quot;:False,\n                &amp;quot;profile.password_manager_enabled&amp;quot;:False,\n                &amp;quot;profile.password_manager_leak_detection&amp;quot;:False\n            })\n            driver = webdriver.Chrome(options=opt)\n        elif browser == &amp;quot;firefox&amp;quot;:\n             firefox_driver_path = Service(r&amp;quot;C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe&amp;quot;)\n&amp;gt;            driver = webdriver.Firefox(service=firefox_driver_path)\n                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n\nconftest.py:30: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\firefox\\webdriver.py:62: in __init__\n    self.service.start()\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:110: in start\n    self.assert_process_still_running()\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.chrome.service.Service object at 0x0000013F5FE2CE10&amp;gt;\n\n    def assert_process_still_running(self) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Check if the underlying process is still running.&amp;quot;&amp;quot;&amp;quot;\n        return_code = self.process.poll()\n        if return_code:\n&amp;gt;           raise WebDriverException(f&amp;quot;Service {self._path} unexpectedly exited. Status code was: {return_code}&amp;quot;)\nE           selenium.common.exceptions.WebDriverException: Message: Service C:\\Users\\Lenovo\\Selenium_POM_Git\\drivers\\geckodriver_win64\\geckodriver.exe unexpectedly exited. Status code was: 64\n\n..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\site-packages\\selenium\\webdriver\\common\\service.py:123: WebDriverException\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;report.html&#34;}"></div>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.14.2&#34;, &#34;Platform&#34;: &#34;Windows-11-10.0.26100-SP0&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;9.0.1&#34;, &#34;pluggy&#34;: &#34;1.6.0&#34;}, &#34;Plugins&#34;: {&#34;allure-pytest&#34;: &#34;2.15.2&#34;, &#34;dependency&#34;: &#34;0.6.0&#34;, &#34;html&#34;: &#34;4.1.1&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;, &#34;order&#34;: &#34;1.3.0&#34;, &#34;ordering&#34;: &#34;0.6&#34;, &#34;rerunfailures&#34;: &#34;16.1&#34;, &#34;xdist&#34;: &#34;3.8.0&#34;}}, &#34;tests&#34;: {&#34;tests/test_login.py::test_login&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_login.py::test_login&#34;, &#34;duration&#34;: &#34;00:00:10&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_login.py::test_login&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:10&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw0] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n&#34;}], &#34;tests/test_your_cart.py::test_yourCart&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_your_cart.py::test_yourCart&#34;, &#34;duration&#34;: &#34;00:00:11&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_your_cart.py::test_yourCart&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:11&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw1] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n&#34;}], &#34;tests/test_products_cart.py::test_itemCart&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_products_cart.py::test_itemCart&#34;, &#34;duration&#34;: &#34;00:00:10&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_products_cart.py::test_itemCart&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:10&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw0] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n&#34;}], &#34;tests/test_your_information.py::test_yourinformation&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_your_information.py::test_yourinformation&#34;, &#34;duration&#34;: &#34;00:00:10&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_your_information.py::test_yourinformation&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:10&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw1] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n&#34;}], &#34;tests/test_overview.py::test_checkoutOverview&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;tests/test_overview.py::test_checkoutOverview&#34;, &#34;duration&#34;: &#34;00:00:13&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;tests/test_overview.py::test_checkoutOverview&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:13&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;[gw0] win32 -- Python 3.14.2 C:\\Users\\Lenovo\\AppData\\Local\\Programs\\Python\\Python314\\python.exe\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;report.html&#34;}"></div>
     <script>
       (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
