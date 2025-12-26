@@ -1,69 +1,164 @@
-/* ------------------------------
-   PYTEST HTML REPORT THEME
-   Clean, Modern, and Readable
---------------------------------*/
+/* ===========================================================
+   SauceDemo-Ecommerce - Web Platform - Selenium-Pytest Report
+   Custom Pytest-HTML CSS (Dashboard Look)
+   Author: Sourav Mohanty / ChatGPT
+   =========================================================== */
 
-/* === BASE === */
+/* ==== General layout ==== */
 body {
-    font-family: 'Segoe UI', 'Roboto', sans-serif;
-    background-color: #f5f7fa;
+    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
+    background-color: #f4f7fa;
     color: #333;
     margin: 0;
     padding: 0;
 }
 
-h1, h2, h3, h4 {
-    color: #202124;
-    font-weight: 600;
-}
-
-/* === HEADER === */
 h1 {
-    background: linear-gradient(135deg, #007bff, #00a8ff);
-    color: white;
-    padding: 20px;
-    margin: 0;
     text-align: center;
-    border-bottom: 4px solid #005ecb;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-size: 1.8em;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    background: linear-gradient(135deg, #007bff, #00c6ff);
+    border-bottom: 5px solid #005ecb;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.15);
 }
 
-/* === TABLES === */
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px auto;
-    background-color: #fff;
-    border-radius: 10px;
+h1::after {
+    content: "SauceDemo-Ecommerce – Web Platform – Selenium-Pytest Automation Report";
+    display: block;
+    font-size: 0.85em;
+    font-weight: normal;
+    color: #e8f0fe;
+    margin-top: 6px;
+}
+
+/* ==== Summary Section ==== */
+#summary {
+    margin: 25px auto;
+    max-width: 950px;
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+#summary .box {
+    flex: 1;
+    text-align: center;
+    padding: 20px;
+    border-radius: 12px;
+    color: white;
+    font-weight: 600;
+    font-size: 1.1em;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+#summary .pass { background: linear-gradient(135deg, #28a745, #34ce57); }
+#summary .fail { background: linear-gradient(135deg, #dc3545, #ff6b6b); }
+#summary .skip { background: linear-gradient(135deg, #ffc107, #ffcd39); }
+
+/* ==== Charts ==== */
+.chart-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    margin: 0 auto 30px auto;
+    max-width: 900px;
+}
+
+/* Pie chart */
+.pie {
+    position: relative;
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    background: conic-gradient(
+        #28a745 var(--pass, 0%) 0%,
+        #dc3545 var(--fail, 0%) 0%,
+        #ffc107 var(--skip, 0%) 0%
+    );
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+.pie::before {
+    content: "Overall Result";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #333;
+    font-size: 0.9em;
+    background: #fff;
+    border-radius: 50%;
+    padding: 10px 15px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+/* Bar chart */
+.bar-chart {
+    flex: 1;
+    min-width: 250px;
+}
+
+.bar {
+    background-color: #e9ecef;
+    border-radius: 8px;
+    margin: 10px 0;
+    height: 24px;
     overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.bar span {
+    display: block;
+    height: 100%;
+    color: white;
+    text-align: right;
+    padding-right: 10px;
+    line-height: 24px;
+    font-weight: 600;
+    font-size: 0.9em;
+    border-radius: 8px;
+}
+
+.bar.pass span { background: linear-gradient(90deg, #28a745, #34ce57); }
+.bar.fail span { background: linear-gradient(90deg, #dc3545, #ff6b6b); }
+.bar.skip span { background: linear-gradient(90deg, #ffc107, #ffcd39); }
+
+/* ==== Tables ==== */
+table {
+    width: 95%;
+    margin: 0 auto 40px auto;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
 }
 
 th {
     background-color: #007bff;
     color: white;
-    font-weight: 600;
     text-transform: uppercase;
-    font-size: 0.9em;
-    padding: 12px 15px;
+    letter-spacing: 0.03em;
+    padding: 12px;
     text-align: left;
+    font-size: 0.9em;
 }
 
 td {
-    padding: 10px 15px;
-    border-bottom: 1px solid #e0e0e0;
+    padding: 10px 14px;
+    border-bottom: 1px solid #eaeaea;
+    font-size: 0.95em;
 }
 
-tr:nth-child(even) {
-    background-color: #f9fafc;
-}
+tr:nth-child(even) { background-color: #f9fafc; }
+tr:hover { background-color: #eef3ff; }
 
-tr:hover {
-    background-color: #eef3ff;
-}
-
-/* === STATUS BADGES === */
-.pass, .failed, .skipped {
+/* ==== Status Tags ==== */
+.status {
     font-weight: 600;
     text-align: center;
     border-radius: 8px;
@@ -71,68 +166,11 @@ tr:hover {
     display: inline-block;
     width: 80px;
 }
+.status.pass { background-color: #d4edda; color: #155724; }
+.status.fail { background-color: #f8d7da; color: #721c24; }
+.status.skip { background-color: #fff3cd; color: #856404; }
 
-.pass {
-    background-color: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
-
-.failed {
-    background-color: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.skipped {
-    background-color: #fff3cd;
-    color: #856404;
-    border: 1px solid #ffeeba;
-}
-
-/* === SUMMARY SECTION === */
-#summary {
-    margin: 20px auto;
-    max-width: 800px;
-    display: flex;
-    justify-content: space-around;
-    gap: 20px;
-}
-
-#summary div {
-    flex: 1;
-    text-align: center;
-    padding: 20px;
-    border-radius: 12px;
-    color: white;
-    font-size: 1.1em;
-    font-weight: 600;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
-}
-
-#summary .passed {
-    background: linear-gradient(135deg, #28a745, #34ce57);
-}
-
-#summary .failed {
-    background: linear-gradient(135deg, #dc3545, #ff6b6b);
-}
-
-#summary .skipped {
-    background: linear-gradient(135deg, #ffc107, #ffcd39);
-}
-
-/* === CODE BLOCKS === */
-code, pre {
-    background-color: #f1f3f4;
-    color: #212529;
-    padding: 6px 10px;
-    border-radius: 6px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.95em;
-}
-
-/* === LOGS & COLLAPSIBLE DETAILS === */
+/* ==== Collapsible details ==== */
 .details {
     background-color: #f8f9fa;
     border: 1px solid #dee2e6;
@@ -147,11 +185,9 @@ code, pre {
     color: #007bff;
 }
 
-.details summary:hover {
-    text-decoration: underline;
-}
+.details summary:hover { text-decoration: underline; }
 
-/* === FOOTER === */
+/* ==== Footer ==== */
 footer {
     text-align: center;
     padding: 15px;
@@ -161,16 +197,7 @@ footer {
     font-size: 0.9em;
 }
 
-/* === SCROLLBAR STYLE === */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-thumb {
-    background: #007bff;
-    border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: #005ecb;
-}
+/* ==== Scrollbar ==== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-thumb { background: #007bff; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #005ecb; }
