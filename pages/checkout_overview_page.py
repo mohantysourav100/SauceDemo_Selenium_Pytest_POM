@@ -2,6 +2,7 @@ from functools import reduce
 
 from selenium.webdriver.common.by import By
 
+from pages.checkout_complete import CheckoutComplete
 from utils.base_utility import Base
 from utils.regular_utility import Regular
 
@@ -44,6 +45,8 @@ class CheckoutOverview(Base,Regular):
 
     def click_finish(self):
         self.click(self.FINISH_BUTTON)
+        checkout_complete = CheckoutComplete(self.driver)
+        return checkout_complete
 
 
 

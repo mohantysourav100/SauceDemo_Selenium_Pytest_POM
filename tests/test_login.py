@@ -1,7 +1,7 @@
 import pytest
 from pages.login_page import Login
 
-@pytest.mark.order("first")
+@pytest.mark.order(1)
 def test_login(driver, baseurl,credentials):
     login = Login(driver)
     login.site_load(baseurl)

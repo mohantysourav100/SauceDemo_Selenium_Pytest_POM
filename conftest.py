@@ -29,7 +29,7 @@ def driver(request):
          #firefox_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\geckodriver_win64\geckodriver.exe")
          driver = webdriver.Firefox()
     elif browser == "edge":
-        edge_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\edgedriver_win64\msedgedriver.exe")
+        edge_driver_path = Service(r".\drivers\edgedriver_win64\msedgedriver.exe")
         driver = webdriver.Edge(service=edge_driver_path)
     driver.maximize_window()
     yield driver
@@ -74,7 +74,7 @@ def overview(your_info):
 
 @pytest.fixture()
 def json_dataextraction():
-    filePath = r"C:\Users\Lenovo\Selenium_POM\data\test_data.json"
+    filePath = r".\data\test_data.json"
     with open(filePath) as file:
         test_data = json.load(file)
         data_list = test_data["data"]
@@ -87,6 +87,13 @@ def user_details():
               "last_name":os.getenv("LAST_NAME"),
               "zip_code":os.getenv("ZIP_CODE")
     }
+@pytest.fixture()
+def checkout_complete(overview,json_dataextraction):
+    overview.item_totalAmount_validation()
+    overview.payment_shippingInfo_validation(json_dataextraction[1]["msg_keywords"])
+    checkout_complete = overview.click_finish()
+    return checkout_complete
+
 @pytest.hookimpl(hookwrapper=True)
 def pytest_runtest_makereport(item):
     outcome = yield
