@@ -1,6 +1,6 @@
 import pytest
 from pages.login_page import Login
-
+@pytest.mark.smoke
 @pytest.mark.order(1)
 def test_login(driver, baseurl,credentials):
     login = Login(driver)
