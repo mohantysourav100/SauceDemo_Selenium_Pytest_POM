@@ -1,10 +1,17 @@
 import json
 import os
+
 from dotenv import load_dotenv
 
 import pytest
 from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from selenium.webdriver.edge.service import Service as EdgeService
+
+from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.firefox import GeckoDriverManager
+from webdriver_manager.microsoft import EdgeChromiumDriverManager
 
 from pages.login_page import Login
 from utils.screenshot_utility import take_screenshot
@@ -24,13 +31,18 @@ def driver(request):
             "profile.password_manager_enabled":False,
             "profile.password_manager_leak_detection":False
         })
-        driver = webdriver.Chrome(options=opt)
+        driver = webdriver.Chrome(options=opt,service=ChromeService(ChromeDriverManager().install()))
     elif browser == "firefox":
-         #firefox_driver_path = Service(r"C:\Users\Lenovo\Selenium_POM_Git\drivers\geckodriver_win64\geckodriver.exe")
-         driver = webdriver.Firefox()
+         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     elif browser == "edge":
-        edge_driver_path = Service(r".\drivers\edgedriver_win64\msedgedriver.exe")
-        driver = webdriver.Edge(service=edge_driver_path)
+        options = webdriver.EdgeOptions()
+        options.add_argument("--disable-logging")
+        options.add_argument("--log-level=3")
+        edge_driver_path = EdgeService(r".\drivers\edgedriver_win64\msedgedriver.exe")
+        driver = webdriver.Edge(service=edge_driver_path,options=options)
+    else:
+        raise ValueError("Unsupported values")
+
     driver.maximize_window()
     yield driver
     driver.quit()
