@@ -56,8 +56,8 @@ pipeline {
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
-                reportDir: '.',
-                reportFiles: 'chrome_report.html, firefox_report.html',
+                reportDir: 'reports',
+                reportFiles: 'chrome_report.html, firefox_report.html,edge_report.html',
                 reportName: 'Cross Browser Test Report'
             ])
         }
