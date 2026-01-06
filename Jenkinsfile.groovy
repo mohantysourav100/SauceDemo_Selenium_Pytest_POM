@@ -51,13 +51,16 @@ pipeline {
             }
          }
        stage('Publish HTML Reports') {
-            steps {
-                publishHTML([
-                    reportDir: '.',
-                    reportFiles: 'chrome_report.html, firefox_report.html, edge_report.html',
-                    reportName: 'Cross Browser Test Report'
-                ])
-            }
+        steps {
+            publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: '.',
+                reportFiles: 'chrome_report.html, firefox_report.html',
+                reportName: 'Cross Browser Test Report'
+            ])
         }
+      }
     }
 }
