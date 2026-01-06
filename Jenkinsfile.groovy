@@ -19,7 +19,7 @@ pipeline {
                     steps {
                         bat '''
                         call venv\\Scripts\\activate
-                        pytest -n 2 --browser_name=chrome -v -s --html=reports/report.html --self-contained-html --alluredir=allure-results --capture=tee-sys
+                        pytest -n 2 --browser_name=chrome -v -s --html=reports/chrome_report.html --self-contained-html --alluredir=allure-results --capture=tee-sys
                         '''
                     }
                 }
@@ -27,7 +27,7 @@ pipeline {
                     steps {
                         bat '''
                         call venv\\Scripts\\activate
-                        pytest -n 2 --browser_name=firefox -v -s --html=reports/report.html --self-contained-html --alluredir=allure-results --capture=tee-sys
+                        pytest -n 2 --browser_name=firefox -v -s --html=reports/firefox_report.html --self-contained-html --alluredir=allure-results --capture=tee-sys
                         '''
                     }
                 }
@@ -35,10 +35,28 @@ pipeline {
                     steps {
                         bat '''
                         call venv\\Scripts\\activate
-                        pytest -n 2 --browser_name=edge -v -s --html=reports/report.html --self-contained-html --alluredir=allure-results --capture=tee-sys
+                        pytest -n 2 --browser_name=edge -v -s --html=reports/edge_report.html --self-contained-html --alluredir=allure-results --capture=tee-sys
                         '''
                     }
                 }
+            }
+        }
+        stage('Generate Allure Report') {
+            steps {
+                allure([
+                    includeProperties: false,
+                    jdk: '',
+                    results: [[path: 'allure-results']]
+                ])
+            }
+         }
+       stage('Publish HTML Reports') {
+            steps {
+                publishHTML([
+                    reportDir: '.',
+                    reportFiles: 'chrome_report.html, firefox_report.html, edge_report.html',
+                    reportName: 'Cross Browser Test Report'
+                ])
             }
         }
     }
