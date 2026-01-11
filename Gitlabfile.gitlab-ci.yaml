@@ -1,0 +1,94 @@
+stages:
+  - install
+  - test
+  - report
+
+# Global variables
+variables:
+  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
+  VENV_DIR: "$CI_PROJECT_DIR/venv"
+  ALLURE_RESULTS: "allure-results"
+  REPORTS_DIR: "reports"
+
+# Use a Windows runner (since your Jenkinsfile uses 'bat' commands)
+# If you’re using Linux runners, I’ll show the Linux version below.
+default:
+  tags:
+    - windows
+  before_script:
+    - python -m venv %VENV_DIR%
+    - call %VENV_DIR%\Scripts\activate
+    - python -m pip install --upgrade pip
+    - pip install -r requirements.txt
+
+# -----------------------------
+# 1️⃣ Install Dependencies Stage
+# -----------------------------
+install_dependencies:
+  stage: install
+  script:
+    - echo "Dependencies installed successfully."
+  artifacts:
+    paths:
+      - venv/
+
+# -----------------------------
+# 2️⃣ Parallel Cross-Browser Tests
+# -----------------------------
+chrome_tests:
+  stage: test
+  script:
+    - call %VENV_DIR%\Scripts\activate
+    - pytest -n 2 --browser_name=chrome -v -s --html=%REPORTS_DIR%/chrome_report.html --self-contained-html --alluredir=%ALLURE_RESULTS% --capture=tee-sys
+  artifacts:
+    paths:
+      - reports/
+      - allure-results/
+    when: always
+
+firefox_tests:
+  stage: test
+  script:
+    - call %VENV_DIR%\Scripts\activate
+    - pytest -n 2 --browser_name=firefox -v -s --html=%REPORTS_DIR%/firefox_report.html --self-contained-html --alluredir=%ALLURE_RESULTS% --capture=tee-sys
+  artifacts:
+    paths:
+      - reports/
+      - allure-results/
+    when: always
+
+edge_tests:
+  stage: test
+  script:
+    - call %VENV_DIR%\Scripts\activate
+    - pytest -n 2 --browser_name=edge -v -s --html=%REPORTS_DIR%/edge_report.html --self-contained-html --alluredir=%ALLURE_RESULTS% --capture=tee-sys
+  artifacts:
+    paths:
+      - reports/
+      - allure-results/
+    when: always
+
+# -----------------------------
+# 3️⃣ Generate Allure Report
+# -----------------------------
+generate_allure_report:
+  stage: report
+  script:
+    - call %VENV_DIR%\Scripts\activate
+    - allure generate %ALLURE_RESULTS% --clean -o allure-report
+  artifacts:
+    paths:
+      - allure-report/
+    when: always
+
+# -----------------------------
+# 4️⃣ Publish HTML Reports
+# -----------------------------
+publish_html_reports:
+  stage: report
+  script:
+    - echo "HTML Reports ready in reports/ folder"
+  artifacts:
+    paths:
+      - reports/
+    when: always
