@@ -18,6 +18,7 @@ default:
       - 'if (Test-Path "$env:VENV_DIR") { Remove-Item -Recurse -Force "$env:VENV_DIR" }'
       - 'python -m venv $env:VENV_DIR'
       - '& "$env:VENV_DIR\Scripts\Activate.ps1"'
+      - 'python -m pip install --upgrade --user pip'
       - 'pip install -r requirements.txt'
 
 # -----------------------------
