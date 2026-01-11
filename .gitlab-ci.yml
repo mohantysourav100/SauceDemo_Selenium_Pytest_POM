@@ -5,8 +5,7 @@ stages:
 
 # Global variables
 variables:
-  PIP_CACHE_DIR: "$CI_PROJECT_DIR/.cache/pip"
-  VENV_DIR: "$CI_PROJECT_DIR/venv"
+  VENV_DIR: "$CI_PROJECT_DIR\\tmp_venv"
   ALLURE_RESULTS: "allure-results"
   REPORTS_DIR: "reports"
 
@@ -16,6 +15,7 @@ default:
   tags:
     - windows
   before_script:
+    - 'if (Test-Path "$env:VENV_DIR") { Remove-Item -Recurse -Force "$env:VENV_DIR" }
     - python -m venv %VENV_DIR%
     - "& \"$env:VENV_DIR\\Scripts\\Activate.ps1\""
     - python -m pip install --upgrade pip
