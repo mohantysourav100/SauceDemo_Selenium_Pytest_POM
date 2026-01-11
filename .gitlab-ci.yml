@@ -12,7 +12,6 @@ default:
   tags:
     - windows
   before_script:
-    # Always use PowerShell on Windows GitLab runners
     - powershell -Command "if (Test-Path '$env:VENV_DIR') { Remove-Item -Recurse -Force '$env:VENV_DIR' }"
     - python -m venv $env:VENV_DIR
     - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'"
@@ -31,10 +30,10 @@ install_dependencies:
 chrome_tests:
   stage: test
   script:
-    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'"
-    - pytest -n 2 --browser_name=chrome -v -s ^
-        --html="$env:REPORTS_DIR\chrome_report.html" --self-contained-html ^
-        --alluredir="$env:ALLURE_RESULTS" --capture=tee-sys
+    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'; pytest -n 2 --browser_name=chrome -v -s `
+        --html='$env:REPORTS_DIR\chrome_report.html' --self-contained-html `
+        --alluredir='$env:ALLURE_RESULTS' --capture=tee-sys"
+    - if (Test-Path "$env:ALLURE_RESULTS") { echo "✅ Allure results found." } else { echo "⚠️ No allure results generated!"; exit 0 }
   artifacts:
     when: always
     paths:
@@ -44,10 +43,9 @@ chrome_tests:
 firefox_tests:
   stage: test
   script:
-    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'"
-    - pytest -n 2 --browser_name=firefox -v -s ^
-        --html="$env:REPORTS_DIR\firefox_report.html" --self-contained-html ^
-        --alluredir="$env:ALLURE_RESULTS" --capture=tee-sys
+    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'; pytest -n 2 --browser_name=firefox -v -s `
+        --html='$env:REPORTS_DIR\firefox_report.html' --self-contained-html `
+        --alluredir='$env:ALLURE_RESULTS' --capture=tee-sys"
   artifacts:
     when: always
     paths:
@@ -57,10 +55,9 @@ firefox_tests:
 edge_tests:
   stage: test
   script:
-    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'"
-    - pytest -n 2 --browser_name=edge -v -s ^
-        --html="$env:REPORTS_DIR\edge_report.html" --self-contained-html ^
-        --alluredir="$env:ALLURE_RESULTS" --capture=tee-sys
+    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'; pytest -n 2 --browser_name=edge -v -s `
+        --html='$env:REPORTS_DIR\edge_report.html' --self-contained-html `
+        --alluredir='$env:ALLURE_RESULTS' --capture=tee-sys"
   artifacts:
     when: always
     paths:
@@ -70,8 +67,7 @@ edge_tests:
 generate_allure_report:
   stage: report
   script:
-    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'"
-    - allure generate $env:ALLURE_RESULTS --clean -o allure-report
+    - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'; allure generate $env:ALLURE_RESULTS --clean -o allure-report"
   artifacts:
     when: always
     paths:
