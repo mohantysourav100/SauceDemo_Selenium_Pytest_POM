@@ -15,11 +15,11 @@ default:
   tags:
     - windows
   before_script:
-    - 'if (Test-Path "$env:VENV_DIR") { Remove-Item -Recurse -Force "$env:VENV_DIR" }
-    - python -m venv %VENV_DIR%
-    - "& \"$env:VENV_DIR\\Scripts\\Activate.ps1\""
-    - python -m pip install --upgrade pip
-    - pip install -r requirements.txt
+      - 'if (Test-Path "$env:VENV_DIR") { Remove-Item -Recurse -Force "$env:VENV_DIR" }'
+      - 'python -m venv $env:VENV_DIR'
+      - '& "$env:VENV_DIR\Scripts\Activate.ps1"'
+      - 'python -m pip install --upgrade pip'
+      - 'pip install -r requirements.txt'
 
 # -----------------------------
 # 1️⃣ Install Dependencies Stage
