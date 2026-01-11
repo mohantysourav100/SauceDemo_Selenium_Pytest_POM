@@ -13,9 +13,10 @@ default:
     - windows
   before_script:
     - powershell -Command "if (Test-Path '$env:VENV_DIR') { Remove-Item -Recurse -Force '$env:VENV_DIR' }"
+    - python -m pip install --upgrade pip
     - python -m venv $env:VENV_DIR
     - powershell -Command "& '$env:VENV_DIR\Scripts\Activate.ps1'"
-    - python -m pip install --upgrade pip setuptools wheel
+    - pip install setuptools wheel
     - pip install -r requirements.txt
 
 install_dependencies:
